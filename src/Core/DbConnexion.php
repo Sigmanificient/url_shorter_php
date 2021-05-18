@@ -1,8 +1,9 @@
 <?php
 
 
-class DBConnexion
+class DbConnexion
 {
+    private static $_instance;
     public $status;
 
     private $_host = "localhost";
@@ -27,6 +28,14 @@ class DBConnexion
         } catch (PDOException $error) {
             $this->status = $error->getMessage();
         }
+    }
 
+    public static function getInstance()
+    {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new DbConnexion();
+        }
+
+        return self::$_instance;
     }
 }
