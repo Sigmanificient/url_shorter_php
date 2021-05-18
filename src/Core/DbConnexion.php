@@ -30,12 +30,19 @@ class DbConnexion
         }
     }
 
-    public static function getInstance()
+    public static function getInstance(): self
     {
         if (is_null(self::$_instance)) {
             self::$_instance = new DbConnexion();
         }
 
         return self::$_instance;
+    }
+
+    public function execute($sql, $params = []): PDOStatement
+    {
+        $stmt = $this->_conn->prepare($sql);
+        $stmt->execute($params);
+        return $stmt;
     }
 }
