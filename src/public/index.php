@@ -8,4 +8,5 @@ $action = (strlen($uri) === 0)? "create" : "read";
 require_once ROOT . '/Controllers/AppController.php';
 
 $controller = new AppController();
-$controller->$action();
+
+($action == "read") ? $controller->$action($uri): $controller->$action();

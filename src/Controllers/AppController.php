@@ -11,9 +11,9 @@ class AppController
         $this->_model = new UrlModel();
     }
 
-    public function read()
+    public function read($url)
     {
-        echo "foo";
+        echo $url;
     }
 
     public function create()
