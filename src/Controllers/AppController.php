@@ -13,11 +13,16 @@ class AppController
 
     public function read($url)
     {
-        echo $url;
+        $url = $this->_model->get($url);
+        $redirect = $url ? $url["redirect"] : "https://url_shorterner_php.test/";
+
+        http_response_code(303);
+        header("Location: {$redirect}");
     }
+
 
     public function create()
     {
-        echo "bar";
+
     }
 }
