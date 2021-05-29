@@ -29,7 +29,9 @@ class UrlModel
 
     public function add($redirect)
     {
-
+        $this->conn->execute(
+            "insert into url_shorter.urls (redirect) values (:redirect)", ['redirect' => $redirect]
+        );
     }
 
 }
