@@ -1,9 +1,11 @@
 <?php
 
 require_once ROOT . '/Models/UrlModel.php';
+require_once ROOT . '/Controllers/Controller.php';
 
-class AppController
+class AppController extends Controller
 {
+
     private $_model;
 
     public function __construct()
