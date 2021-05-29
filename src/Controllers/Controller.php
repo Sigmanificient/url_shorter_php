@@ -6,10 +6,9 @@ abstract class Controller
 
     protected function render(string $file)
     {
-        $ext = empty($data) ? 'html' : 'php';
 
         ob_start();
-        require_once ROOT . '/Views/' . basename(get_class($this), 'Controller') . '/' . $file . '.' . $ext;
+        require_once ROOT . '/Views/' . basename(get_class($this), 'Controller') . '/' . $file . '.php';
 
         if ($_SERVER['REQUEST_URI'] !== '/dev') {
             $content = ob_get_clean();
