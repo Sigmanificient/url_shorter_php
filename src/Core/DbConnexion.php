@@ -3,7 +3,7 @@
 
 class DbConnexion
 {
-    private static DbConnexion $_instance;
+    private static ?self $_instance = null;
     public string $status;
 
     private string $_host = "localhost";
