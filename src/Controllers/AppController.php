@@ -25,6 +25,13 @@ class AppController extends Controller
 
     public function create()
     {
-        $this->render('create');
+        $url = $_POST['url'] ?? '';
+
+        if (empty($_POST['url'])) {
+            $this->render('create');
+            return;
+        }
+
+        $this->_model->add($url);
     }
 }
