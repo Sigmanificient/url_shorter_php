@@ -11,13 +11,10 @@ class UrlModel
         $this->conn = DBConnexion::getInstance();
     }
 
-    public function exists($id): bool
+    public function get_max_id(): int
     {
-        $stmt = $this->conn->execute(
-            "select count(*) as 'n' from url_shorter.urls where id = :id;", ['id' => $id]
-        );
-
-        return ((int)($stmt->fetch()['n'])) > 0;
+        $stmt = $this->conn->execute("select max(id) from url_shorter.urls");
+        return (int)$stmt->fetch();
     }
 
     public function get($id)
@@ -32,15 +29,7 @@ class UrlModel
 
     public function add($redirect)
     {
-        do {
-            $id = base64_encode(bin2hex(random_bytes(5)));
 
-        } while ($this->exists($id));
-
-        $stmt = $this->conn->execute(
-            "insert into url_shorter.urls values (:id, :redirect)",
-            ['id' => $id, 'redirect' => $redirect]
-        );
     }
 
 }
