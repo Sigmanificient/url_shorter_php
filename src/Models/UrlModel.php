@@ -26,7 +26,7 @@ class UrlModel
             "select redirect from url_shorter.urls where id = :id;", ['id' => $id]
         );
 
-        return $stmt->fetch()["redirect"];
+        return $stmt->fetch();
 
     }
 
