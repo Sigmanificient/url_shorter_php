@@ -25,6 +25,6 @@ class AppController extends Controller
 
     public function create()
     {
-
+        $this->render('create');
     }
 }
