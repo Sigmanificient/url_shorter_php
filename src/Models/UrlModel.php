@@ -4,7 +4,7 @@ require_once ROOT . '/Core/DBConnexion.php';
 
 class UrlModel
 {
-    private $conn;
+    private DbConnexion $conn;
 
     public function __construct()
     {

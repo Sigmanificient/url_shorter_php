@@ -6,7 +6,7 @@ require_once ROOT . '/Controllers/Controller.php';
 class AppController extends Controller
 {
 
-    private $_model;
+    private UrlModel $_model;
 
     public function __construct()
     {

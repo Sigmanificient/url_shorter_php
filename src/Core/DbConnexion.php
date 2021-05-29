@@ -3,15 +3,15 @@
 
 class DbConnexion
 {
-    private static $_instance;
-    public $status;
+    private static DbConnexion $_instance;
+    public string $status;
 
-    private $_host = "localhost";
-    private $_dbname = "url_shorter";
-    private $_dbuser = "root";
-    private $_dbpassword = "";
+    private string $_host = "localhost";
+    private string $_dbname = "url_shorter";
+    private string $_dbuser = "root";
+    private string $_dbpassword = "";
 
-    private $_conn;
+    private PDO $_conn;
 
     private function __construct()
     {
