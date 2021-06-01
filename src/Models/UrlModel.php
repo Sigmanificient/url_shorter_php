@@ -13,24 +13,23 @@ class UrlModel
 
     public function get_max_id(): int
     {
-        $stmt = $this->conn->execute("select max(id) from url_shorter.urls");
-        return (int)$stmt->fetch();
+        $stmt = $this->conn->execute("select max(id) as 'id' from url_shorter.urls");
+        return (int)$stmt->fetch()['id'];
     }
 
     public function get($id)
     {
         $stmt = $this->conn->execute(
-            "select redirect from url_shorter.urls where id = :id;", ['id' => $id]
+            "select redirect from url_shortener.urls where id = :id;", ['id' => $id]
         );
 
         return $stmt->fetch();
-
     }
 
     public function add($redirect)
     {
         $this->conn->execute(
-            "insert into url_shorter.urls (redirect) values (:redirect)", ['redirect' => $redirect]
+            "SELECT insert_return(:redirect) AS id_url;", ['redirect' => $redirect]
         );
     }
 

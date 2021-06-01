@@ -25,6 +25,7 @@ class AppController extends Controller
 
     public function create()
     {
+
         $url = $_POST['url'] ?? '';
 
         if (empty($_POST['url'])) {
@@ -33,5 +34,6 @@ class AppController extends Controller
         }
 
         $this->_model->add($url);
+        echo $this->_model->get_max_id();
     }
 }
